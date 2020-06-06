@@ -1,5 +1,5 @@
 <header>
-  <title><%= "'title'|#{title}" %></title>
+  <title><%= full_title(yield(:title)) %></title>
   <%= link_to 'top', '#' %>
   <%= #探索フォーム %>
   <%= #通知あり。なし。 %>
