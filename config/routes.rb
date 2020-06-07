@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
   root 'static_pages#home'
-  get 'static_pages/terms_of_use'
+  get '/terms', to: 'static_pages#terms'
   resources :users
 end

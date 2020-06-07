@@ -1,10 +1,12 @@
-<%= if logged_in? %>
+<%= #if logged_in? %>
 <% #ログイン後のこと %>
   
-<%= else logged_in? %>
+<%= #else logged_in? %>
 <% #ログイン前のこと %>
+<div class="row">
   <h1>ランディングページ</h1>
-  <section>
-    <a href="#" >Facebookログインのリンクがある</a>
+  <section class="facebooklogin">
+    <%= link_to "Facebookログイン", root_path %>
   </section>
-<%= end %>
+</div>
+<%= #end %>
