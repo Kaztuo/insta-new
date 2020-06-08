@@ -3,9 +3,9 @@
 one:
   full_name: MyString
   user_name: MyString
-  password: MyString
+  password_digest: <%= User.digest('password') %>
 
 two:
   full_name: MyString
   user_name: MyString
-  password: MyString
+  password_digest: <%= User.digest('password') %>
