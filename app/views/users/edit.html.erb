@@ -1,2 +1,29 @@
-<% provide(:title, "Edit user") %>
+<% provide(:title, "Edit profile") %>
 <h1>ユーザー編集ページ</h1>
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_with(model: @user, local: true) do |f| %>
+      公開情報
+      <%= f.label :full_name, "名前（必須入力）" %>
+      <%= f.text_field :full_name, class: 'form-control' %>
+      <%= f.label :user_name, "ユーザーネーム（必須入力）" %>
+      <%= f.text_field :user_name, class: 'form-control' %>
+      <%= f.label :website, "ウェブサイト" %>
+      <%= f.url_field :website, class: 'form-control' %>
+      <%= f.label :self_introduction, "自己紹介" %>
+      <%= f.text_area :self_introduction, class: 'form-control', maxlength: 1000, placeholder: "最大１０００文字" %>
+      非公開情報
+      <%= f.label :email, "メールアドレス" %>
+      <%= f.email_field :email, class: 'form-control' %>
+      <%= f.label :phone_number, "電話番号" %>
+      <%= f.number_field :phone_number, class: 'form-control' %>
+      <%= f.label :gender, "性別" %>
+      <%= f.radio_button :gender, "女", class: 'form-control' %>女
+      <%= f.radio_button :gender, "男", class: 'form-control' %>男
+      <%= f.submit "編集する", class: "btn btn-primary" %>
+    <% end %>
+      <%= button_to "アカウント削除", '/users/destroy',
+                                   class: 'btn',
+                                   method: :delete %>
+  </div>
+</div>
