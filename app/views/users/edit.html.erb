@@ -2,7 +2,7 @@
 <h1>プロフィール編集ページ</h1>
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
-    <%= form_with(model: @user, local: true) do |f| %>
+    <%= form_with(url: user_path, scope: :user, local: true, method: :patch) do |f| %>
       公開情報<br>
       <%= f.label :full_name, "名前（必須入力）" %>
       <%= f.text_field :full_name, class: 'form-control' %>
@@ -17,9 +17,15 @@
       <%= f.email_field :email, class: 'form-control' %>
       <%= f.label :phone_number, "電話番号" %>
       <%= f.number_field :phone_number, class: 'form-control' %>
-      <%= f.label :gender, "性別" %>
-      <%= f.radio_button :gender, "女", class: 'form-control' %>女
-      <%= f.radio_button :gender, "男", class: 'form-control' %>男
+
+      <%= f.label :gender, "性別" %><br>
+      <%= f.label :gender, "男" %>
+      <%= f.radio_button :gender, 1 %>
+      <%= f.label :gender, "女" %>
+      <%= f.radio_button :gender, 2 %>
+      <%= f.label :gender, "それ以外" %>
+      <%= f.radio_button :gender, 3 %>
+      
       <%= f.submit "編集する", class: "btn btn-primary" %>
     <% end %>
       <%= button_to "アカウント削除", '/users/destroy',
