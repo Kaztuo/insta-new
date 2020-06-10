@@ -3,3 +3,6 @@
   <%= gravatar_for @user %>
   <%= @user.user_name %> 
 </h1>
+<div>
+  <%= link_to "プロフィール編集ページ", edit_user_path(@user) %>
+</div>
