@@ -1,6 +1,14 @@
-<div class="center jumbotron">
-  <h1>Instagram アプリ<br>ランディングページ</h1>
-  <section class="facebooklogin">
-    <%= link_to "Facebookログイン", new_session_path, class: "btn btn-lg btn-primary" %>
-  </section>
-</div>
+<% if logged_in? %>
+  <div class="center jumbotron">
+    <p>フォローしているユーザーの画像が一覧で表示される</p>
+    <p>写真をお気に入りに入れることができる</p>
+    <p>写真にコメントを記入することができる</p>
+  </div>
+<% else %>
+  <div class="center jumbotron">
+    <h1>Instagram アプリ<br>ランディングページ</h1>
+    <section class="facebooklogin">
+      <%= link_to "Facebookログイン", new_session_path, class: "btn btn-lg btn-primary" %>
+    </section>
+  </div>
+<% end %>  
