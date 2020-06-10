@@ -1,0 +1,7 @@
+Example photos one:
+  created_at: <%= 20.minutes.ago %>
+  user: example_user_one
+
+Example photos two:
+  created_at: <%= 10.minutes.ago %>
+  user: example_user_two
