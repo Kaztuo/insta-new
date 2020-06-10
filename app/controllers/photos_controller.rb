@@ -5,12 +5,12 @@ class PhotosController < ApplicationController
   end
   
   def create
-    @micropost = current_user.photos.build(photo_params)
-    if @micropost.save
-      flash[:success] = "Micropost created!"
-      redirect_to root_url
+    @uplaad_photo = current_user.photos.build(photo_params)
+    if @uplaad_photo.save
+      flash[:success] = "写真がアップロードされました！"
+      redirect_to photo_path(current_user)
     else
-      render 'static_pages/home'
+      render 'photos/new'
     end
   end
 
