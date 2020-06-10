@@ -1,8 +1,12 @@
 <% provide(:title, @user.user_name) %>
 <h1>
-  <%= gravatar_for @user %>
+  <%= gravatar_for @user if @user.email %>
   <%= @user.user_name %> 
 </h1>
-<div>
-  <%= link_to "プロフィール編集ページ", edit_user_path(@user) %>
-</div>
+<% if current_user?(@user)%>
+  <div>
+    <%= link_to "プロフィール編集ページ", edit_user_path(@user) %>
+  </div>
+<% else %>
+  <h2>自分以外のページ</h2>
+<% end %>
