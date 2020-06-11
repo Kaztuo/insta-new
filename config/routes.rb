@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'comments/new'
+  get 'comments/create'
   # get 'sessions/new'
   # get 'photos/create'
   # get 'photos/show'
