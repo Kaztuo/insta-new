@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-  has_many :microposts, dependent: :destroy
+  has_many :photos, dependent: :destroy
   has_secure_password
   
   def User.digest(string)

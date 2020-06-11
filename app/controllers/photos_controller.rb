@@ -5,13 +5,17 @@ class PhotosController < ApplicationController
   end
   
   def create
-    @uplaad_photo = current_user.photos.build(photo_params)
-    if @uplaad_photo.save
+    @upload_photo = current_user.photos.build(photo_params)
+    @upload_photo.image.attach(params[:photo][:image])
+    if @upload_photo.save
       flash[:success] = "写真がアップロードされました！"
-      redirect_to photo_path(current_user)
+      redirect_to photo_path(id: @upload_photo.id)
     else
       render 'photos/new'
     end
+  end
+  
+  def show
   end
 
   def destroy
@@ -20,6 +24,6 @@ class PhotosController < ApplicationController
   private
 
     def photo_params
-      params.require(:photo).permit(:content)
+      params.require(:photo).permit(:id, :image)
     end
 end
