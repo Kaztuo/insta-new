@@ -14,4 +14,5 @@ Rails.application.routes.draw do
   resources :users
   resources :password_resets
   resources :photos
+  resources :comments
 end
