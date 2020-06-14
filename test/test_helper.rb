@@ -9,4 +9,24 @@ class ActiveSupport::TestCase
   # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.
   fixtures :all
   include ApplicationHelper
+    
+  def is_logged_in?
+    !session[:user_id].nil? 
+  end
+  
+  def log_in_as(user)
+    session[:user_id] = user.id
+  end
+end  
+  
+class ActionDispatch::IntegrationTest
+  
+  def setup
+    @user = users(:example_user_one)
+  end
+
+  def log_in_as(user, password: 'password')
+    post login_path, params: { session: { user_name: user.user_name,
+                                          password: password} }
+  end
 end

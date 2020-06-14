@@ -1,14 +1,12 @@
 require 'test_helper'
 
 class CommentsControllerTest < ActionDispatch::IntegrationTest
-  test "should get new" do
-    get comments_new_url
-    assert_response :success
-  end
 
-  test "should get create" do
-    get comments_create_url
-    assert_response :success
+  test "should redirect create when not logged in" do
+    assert_difference 'Comment.count', 1 do
+      post comments_path, params: { comment: { comment: "Lorem ipsum"},
+                                   photo_id: 1 }
+    end
+    assert_redirected_to photo_path(id: 1)
   end
-
 end

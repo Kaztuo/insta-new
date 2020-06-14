@@ -1,8 +1,5 @@
 class PhotosController < ApplicationController
-  
-  def new
-    @photo = Photo.new
-  end
+  before_action :logged_in_user, only: [:create]
   
   def create
     @upload_photo = current_user.photos.build(photo_params)
@@ -11,6 +8,7 @@ class PhotosController < ApplicationController
       flash[:success] = "写真がアップロードされました！"
       redirect_to photo_path(id: @upload_photo.id)
     else
+      flash.now[:danger] = "再度、写真をアップロードしてください"
       render 'photos/new'
     end
   end
@@ -26,6 +24,6 @@ class PhotosController < ApplicationController
   private
 
     def photo_params
-      params.require(:photo).permit(:id, :image)
+      params.require(:photo).permit(:image)
     end
 end
