@@ -10,3 +10,13 @@
 <% else %>
   <h2>自分以外のページ</h2>
 <% end %>
+<section class="uploaded photos number">
+  これまでに登録した写真の件数:
+  <%= @user.photos.count %>
+</section>
+<section class="stats">
+  <%= render 'shared/stats' %>
+</section>
+<section class="follow-unfollow">
+  <%= render 'follow_form' %>
+</section>

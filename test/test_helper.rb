@@ -22,7 +22,7 @@ end
 class ActionDispatch::IntegrationTest
   
   def setup
-    @user = users(:example_user_one)
+    @user = users(:example_user_1)
   end
 
   def log_in_as(user, password: 'password')

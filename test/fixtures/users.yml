@@ -1,9 +1,19 @@
-example_user_one:
+example_user_1:
   full_name: Example One
-  user_name: exampleone
+  user_name: example one
   password_digest: <%= User.digest('password') %>
 
-example_user_two:
+example_user_2:
   full_name: Example Two
   user_name: example two
+  password_digest: <%= User.digest('password') %>
+
+example_user_3:
+  full_name: Example Three
+  user_name: xexample three
+  password_digest: <%= User.digest('password') %>
+
+example_user_4:
+  full_name: Example Four
+  user_name: example four
   password_digest: <%= User.digest('password') %>
