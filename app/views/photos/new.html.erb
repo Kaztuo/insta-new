@@ -7,6 +7,6 @@
     <%= f.label :image, "写真選択ボタン" %>
     <%= f.file_field :image, accept: "image/jpeg, image/png" %>
   </span>
-  <%= f.hidden_field :id %>
+  <%= f.hidden_field :user_id  %>
   <%= f.submit "写真アップロードボタン", class: "btn btn-primary" %>
 <% end %>
