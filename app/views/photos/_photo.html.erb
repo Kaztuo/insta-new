@@ -1,5 +1,12 @@
-<li id="photo-<%= photo.id %>">
-  <span class="photo">
-    <%= image_tag photo.display_image %>
-  </span>
-</li>
+<div class="modal-dialog">
+    <div class="modal-content">
+      <li id="photo-<%= photo.id %>">
+        <span class="photo">
+          <%= image_tag photo.display_image %>
+        </span>
+      </li>
+      <ol class="comments">
+          <%= render @comments %>
+      </ol>
+    </div>
+</div>    
