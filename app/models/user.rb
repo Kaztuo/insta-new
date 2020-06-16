@@ -38,4 +38,8 @@ class User < ApplicationRecord
     followers.include?(other_user)
   end
   
+  # def feed
+  #   Photo.where("user_id = ?", self.id)
+  # end
+  
 end

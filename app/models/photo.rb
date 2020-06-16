@@ -7,6 +7,6 @@ class Photo < ApplicationRecord
   validates :image, presence: true
   
   def display_image
-    image.variant(combine_options:{resize:"500x500^",crop:"500x500+0+0",gravity: :center}).processed
+    image.variant(combine_options:{resize:"300x300^",crop:"300x300+0+0",gravity: :center}).processed
   end
 end
