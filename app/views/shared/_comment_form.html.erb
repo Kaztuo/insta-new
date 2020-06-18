@@ -3,6 +3,6 @@
   <div class="field">
     <%= f.text_area :comment, placeholder: "コメント。。。。" %>
   </div>
-  <%= hidden_field_tag :photo_id, @photos.id %>
+  <%= hidden_field_tag :photo_id, @photo.id %>
   <%= f.submit "コメントを投稿する", class: "btn btn-primary" %>
 <% end %>

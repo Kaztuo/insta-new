@@ -38,8 +38,13 @@ class User < ApplicationRecord
     followers.include?(other_user)
   end
   
-  # def feed
-  #   Photo.where("user_id = ?", self.id)
-  # end
+  def feed
+    # following_ids = "SELECT followed_id FROM relationships
+    #                 WHERE follower_id = :user_id"
+    # Photo.where("user_id IN (#{following_ids})
+    #                 OR user_id = :user_id", user_id: id)
+                     
+    Photo.where("user_id IN (?)", following_ids)
+  end
   
 end

@@ -1,15 +1,16 @@
-<div class="modal-dialog">
-    <div class="modal-content">
-      <li id="photo-<%= photo.id %>">
-        <span class="photo">
-          <%= image_tag photo.display_image %>
-        </span>
-      </li>
-      <ol class="comments">
-          <%= render @comments %>
-      </ol>
-      <section class="comment_form">
-          <%= render 'shared/comment_form' %>
-      </section>
-    </div>
-</div>    
+<li id="photo-<%= photo.id %>">
+  <span class="photo">
+    <%= image_tag photo.display_image %>
+  </span>
+</li>
+
+<ol class="comments">
+    <% @comments = photo.comments %>
+    <%= render @comments %>
+</ol>
+
+<section class="comment_form">
+    <% @photo = photo %>
+    <%= render 'shared/comment_form' %>
+</section>
+
