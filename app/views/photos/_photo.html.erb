@@ -5,7 +5,7 @@
 </li>
 
 <ol class="comments">
-    <% @comments = photo.comments %>
+    <% @comments = photo.comments.compact %>
     <%= render @comments %>
 </ol>
 

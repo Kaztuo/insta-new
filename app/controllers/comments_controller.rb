@@ -9,6 +9,7 @@ class CommentsController < ApplicationController
       flash[:success] = "comment post!"
       redirect_to photo_path(id: @photo.id)
     else
+      @comments = @photo.comments.compact
       render 'photos/show' 
     end
   end
