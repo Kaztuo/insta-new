@@ -27,12 +27,17 @@ class CommentsController < ApplicationController
       if @comments.blank?
         flash.now[:danger] = "お探しのキーワードで写真が見つかりませんでした"
       end
+      render 'comments/search'
     else
       @comments = Comment.none
       if entered.blank? && !entered.nil?
         flash.now[:danger] = "検索キーワードを入力して下さい"
       end
     end
+  end
+  
+  def index
+    @comments = Comment.all
   end
   
   private
