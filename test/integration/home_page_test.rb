@@ -1,11 +1,22 @@
 require 'test_helper'
 
 class HomePageTest < ActionDispatch::IntegrationTest
-  test "upload empty photo" do
+
+  def setup
+    @user = users(:example_user_1)
+  end
+
+  test "comment to photo" do
     log_in_as(@user)
     get root_path
-    assert_no_difference 'Photo.count' do
-      post comments_path, params: { comment: { comment: "" } }
+    assert_difference 'Comment.count', 1 do
+      #photo = fixture_file_upload('test/fixtures/test_photo.jpg', 'image/jpg')
+      post comments_path, params: { comment: { comment: "test" }, 
+                                   photo_id: 1 }
+                                   #photo: photo }
     end
+    assert assigns(:comment).comment
+    #follow_redirect!
+    #assert_match comment, response.body
   end
 end

@@ -1,0 +1,42 @@
+<% if logged_in? %>
+  <div class="row">
+    <aside class="col-md-4">
+      <h1>検索フォーム</h1>
+      <%= form_with url: search_comments_path, method: :get, local: true do |f| %>
+        <%= f.text_field :searching_comment, placeholder: "検索キーワードを入力してください" %>
+        <%= f.submit "検索実行ボタン" %>
+      <% end %>
+      <div>
+        <% if @searching_keyword %>
+          <%= "検索キーワード；#{@searching_keyword}" %>
+        <% end %>
+      </div>
+    </aside>
+    <div class="col-md-8">
+      <table>
+        <thead>
+          <tr>
+            <th>
+              <% if @searching_keyword && !@comments.blank? %>
+                <%= "検索結果" %>
+              <% elsif @searching_keyword && @comments.blank? %>
+                <%= image_tag 'keyword_not_found.jpg' %>
+              <% end %>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @comments.each do |result_comment| %>
+            <% photo = Photo.find_by(id: result_comment.photo_id) %>
+            <tr>
+              <td><%= result_comment.comment %></td>
+              <td><%= image_tag photo.display_image %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </aside>
+  </div>  
+<% else %>
+  <%= link_to "Sign up now!", signup_path, class: "btn btn-lg btn-primary" %>
+<% end %>

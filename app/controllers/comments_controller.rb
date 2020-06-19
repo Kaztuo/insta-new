@@ -6,15 +6,33 @@ class CommentsController < ApplicationController
     @photo = Photo.find_by(id: params[:photo_id])
     @comment = @photo.comments.build(comment_params)
     if @comment.save
-      flash[:success] = "comment post!"
+      flash[:success] = "コメントしました"
       redirect_to photo_path(id: @photo.id)
     else
+      flash.now[:danger] = "コメントに失敗しました"
       @comments = @photo.comments.compact
+      @photos = @feed_items
       render 'photos/show' 
     end
   end
   
   def show
+  end
+  
+  def search
+    entered = params[:searching_comment]
+    if entered.present?
+      @searching_keyword = "#{entered}"
+      @comments = Comment.where('comment LIKE ?', "%#{entered}%")
+      if @comments.blank?
+        flash.now[:danger] = "お探しのキーワードで写真が見つかりませんでした"
+      end
+    else
+      @comments = Comment.none
+      if entered.blank? && !entered.nil?
+        flash.now[:danger] = "検索キーワードを入力して下さい"
+      end
+    end
   end
   
   private

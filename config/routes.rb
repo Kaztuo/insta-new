@@ -1,6 +1,11 @@
 Rails.application.routes.draw do
   get 'comments/new'
   get 'comments/create'
+  
+  resources :comments do
+    get :search, on: :collection
+  end
+  
   # get 'sessions/new'
   # get 'photos/create'
   # get 'photos/show'
