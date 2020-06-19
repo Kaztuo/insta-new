@@ -30,7 +30,11 @@
             <% photo = Photo.find_by(id: result_comment.photo_id) %>
             <tr>
               <td><%= result_comment.comment %></td>
-              <td><%= image_tag photo.display_image %></td>
+              <td>
+                <%= link_to photo_path(photo.id), local: true do %>
+                <%= image_tag photo.display_image %>
+                <% end %>
+              </td>
             </tr>
           <% end %>
         </tbody>
