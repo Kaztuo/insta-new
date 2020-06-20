@@ -2,7 +2,7 @@
   <div class="row">
     <aside class="col-md-4">
       <h1>検索フォーム</h1>
-      <%= form_with url: search_comments_path, method: :get, local: true do |f| %>
+      <%= form_with url: '/comments/search', method: :get, local: true do |f| %>
         <%= f.text_field :searching_comment, placeholder: "検索キーワードを入力してください" %>
         <%= f.submit "検索実行ボタン" %>
       <% end %>

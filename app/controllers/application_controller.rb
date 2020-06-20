@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
 
   def set_search
     @search = Comment.ransack(params[:q])
-    @search_comments = @search.result
+    @search_comments = @search.result(distinct: true)
   end
 
   private
