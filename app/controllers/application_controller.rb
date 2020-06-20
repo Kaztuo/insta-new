@@ -4,8 +4,8 @@ class ApplicationController < ActionController::Base
   before_action :set_search
 
   def set_search
-    @search = Comment.ransack(params[:q])
-    @search_comments = @search.result(distinct: true)
+    @q = Comment.ransack(params[:q])
+    @search_comments = @q.result(distinct: true)
   end
 
   private
