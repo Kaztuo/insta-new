@@ -1,12 +1,12 @@
 class ApplicationController < ActionController::Base
     include SessionsHelper
 
-  before_action :set_search
+  # before_action :set_search
 
-  def set_search
-    @q = Comment.ransack(params[:q])
-    @search_comments = @q.result(distinct: true)
-  end
+  # def set_search
+  #   @q = Comment.ransack(params[:q])
+  #   @search_comments = @q.result(distinct: true)
+  # end
 
   private
 

@@ -32,41 +32,9 @@ class CommentsController < ApplicationController
       @comments = Comment.none
       if entered.blank? && !entered.nil?
         flash.now[:danger] = "検索キーワードを入力して下さい"
-      end
-    end
-  end
-  
-  def index
-    entered = params[:q][:comment_cont]
-    if entered.present?
-      @searching_keyword = "#{entered}"
-      @comments = Comment.where('comment LIKE ?', "%#{entered}%")
-      if @comments.blank?
-        flash.now[:danger] = "お探しのキーワードで写真が見つかりませんでした"
-      end
-      render 'comments/search'
-    else
-      @comments = Comment.none
-      if entered.blank? && !entered.nil?
-        flash.now[:danger] = "検索キーワードを入力して下さい"
         render 'comments/search'
       end
     end
-
-    # if entered.present?
-      
-    #   flash.now[:success] = "検索結果"
-      
-    # else
-    #   flash.now[:danger] = "検索キーワードを入力して下さい"
-      
-    #   render 'comments/search'
-    # end
-    
-    # if @search_comments.empty?
-    #   #flash.now[:success] = "検索結果"
-    #   flash.now[:danger] = "お探しのキーワードで写真が見つかりませんでした"
-    # end
   end
   
   private
