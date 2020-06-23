@@ -1,5 +1,11 @@
 class User < ApplicationRecord
   has_many :photos, dependent: :destroy
+  has_many :likes, dependent: :destroy
+  has_many :liked_photos, through: :likes, source: :photo
+  def already_liked?(photo)
+    self.likes.exists?(photo_id: photo.id)
+  end
+  
   has_many :active_relationships,  class_name: "Relationship",
                                   foreign_key: "follower_id",
                                     dependent: :destroy
@@ -12,6 +18,7 @@ class User < ApplicationRecord
   has_many :followers, through: :passive_relationships #, source: :follower 
                                                        #Railsが「followers」を単数形にして
                                                        #自動的に外部キーfollower_idを探してくれる
+                                                       
 
   def User.digest(string)
     cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :

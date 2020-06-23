@@ -3,6 +3,7 @@
   <%= gravatar_for @user if @user.email %>
   <%= @user.user_name %> 
 </h1>
+
 <% if current_user?(@user)%>
   <div>
     <%= link_to "プロフィール編集ページ", edit_user_path(@user) %>
@@ -10,16 +11,20 @@
 <% else %>
   <h2>自分以外のページ</h2>
 <% end %>
+
 <section class="follow-unfollow">
   <%= render 'follow_form' %>
 </section>
+
 <section class="uploaded photos number">
   これまでに登録した写真の件数:
   <%= @user.photos.count %>
 </section>
+
 <section class="stats">
   <%= render 'shared/stats' %>
 </section>
+
 <section class="user-self_introduction">
   自己紹介
   <%=  @user.self_introduction %>
@@ -28,5 +33,12 @@
 <div class="row">
   <ol class="lined_up_photos">
       <%= render 'shared/lined_up_photos' %>
+  </ol>
+</div>
+
+いいねした写真
+<div class="row">
+  <ol class="like_photos">
+      <%= render 'users/likes' %>
   </ol>
 </div>

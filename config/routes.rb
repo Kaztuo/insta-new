@@ -24,7 +24,10 @@ Rails.application.routes.draw do
 
   resources :users
   resources :password_resets
-  resources :photos
+  resources :photos do
+    resources :likes,               only: [:create, :destroy]
+  end
   resources :comments
   resources :relationships,       only: [:create, :destroy]
+  
 end

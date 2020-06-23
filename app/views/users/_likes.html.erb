@@ -1,0 +1,4 @@
+<h3>いいねしている投稿</h3>
+<% @user.liked_photos.each do |photo| %>
+  <%= photo.id %>
+<% end %>
