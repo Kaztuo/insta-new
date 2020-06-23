@@ -1,4 +1,5 @@
-<h3>いいねしている投稿</h3>
+<p>いいねしている投稿</p>
 <% @user.liked_photos.each do |photo| %>
-  <%= photo.id %>
+  <%= link_to photo.id, photo_path(photo.id) %>
+  <%= "/" %>
 <% end %>
