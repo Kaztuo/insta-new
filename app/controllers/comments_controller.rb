@@ -7,6 +7,7 @@ class CommentsController < ApplicationController
     @comment = @photo.comments.build(comment_params)
     if @comment.save
       flash[:success] = "コメントしました"
+      @comment.create_notification_comment!(current_user, @comment.id)
       redirect_to photo_path(id: @photo.id)
     else
       flash.now[:danger] = "コメントに失敗しました"

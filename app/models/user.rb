@@ -18,7 +18,12 @@ class User < ApplicationRecord
   has_many :followers, through: :passive_relationships #, source: :follower 
                                                        #Railsが「followers」を単数形にして
                                                        #自動的に外部キーfollower_idを探してくれる
-                                                       
+  has_many :active_notifications, class_name: 'Notification', foreign_key: 'visitor_id', dependent: :destroy
+  has_many :passive_notifications, class_name: 'Notification', foreign_key: 'visited_id', dependent: :destroy
+  
+
+
+
 
   def User.digest(string)
     cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :

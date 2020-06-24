@@ -1,6 +1,8 @@
 class LikesController < ApplicationController
   def create
     @like = current_user.likes.create(photo_id: params[:photo_id])
+    photo = Photo.find_by(id: params[:photo_id])
+    photo.create_notification_like!(current_user)
     redirect_to root_path
   end
 
