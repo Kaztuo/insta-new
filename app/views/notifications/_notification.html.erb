@@ -11,13 +11,13 @@
       <%= link_to 'あなたの投稿', notification.photo, style: "font-weight: bold;" %>
       <%= 'をお気に入りに入れました' %>
     <% when 'comment' then %>
-      <% if notification.post.user_id == visited.id %>
-      <%= link_to "あなたの投稿", notification.post, style: "font-weight: bold;" %>
+      <% if notification.photo.user_id == visited.id %>
+      <%= link_to "あなたの投稿", notification.photo, style: "font-weight: bold;" %>
       <%= 'にコメントしました' %>
       <% end %>
-    <span class='small text-muted text-right' >
-      <%= time_ago_in_words(notification.created_at).upcase %>
-    </span>
   <% end %>
+  <span class='small text-muted text-right' >
+    <%= time_ago_in_words(notification.created_at).upcase %>
+  </span>
 </span>  
 <hr>
