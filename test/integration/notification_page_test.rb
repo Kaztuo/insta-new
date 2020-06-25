@@ -1,7 +1,7 @@
 require 'test_helper'
 
-class PhotoLikeTest < ActionDispatch::IntegrationTest
-  test "Push like button" do
+class NotificationPageTest < ActionDispatch::IntegrationTest
+  test "Add likes on photos" do
     log_in_as(@user)
     get root_path
     assert_template 'static_pages/home'
@@ -14,11 +14,10 @@ class PhotoLikeTest < ActionDispatch::IntegrationTest
     assert_template 'static_pages/home'
     assert_select "input", value: "いいねを取り消す"
     
-    #いいねを取り消す
-    delete like_path(id: Like.find_by(photo_id: photo.id).id, photo_id: photo.id)
-    assert_redirected_to root_path
-    follow_redirect!
-    assert_template 'static_pages/home'
-    assert_select "input", value: "いいね"
+    #通知を確認する
+    delete logout_path
+    log_in_as(users(:example_user_3))
+    get notifications_path
+    assert_select "a","さんが" 
   end
 end

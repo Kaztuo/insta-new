@@ -9,6 +9,8 @@ class CommentsController < ApplicationController
       flash[:success] = "コメントしました"
       @comment.update_attributes(user_id: current_user.id)
       @comment.create_notification_comment!(current_user, @photo.id, @comment.id, @photo.user_id)
+      @user = User.find(@photo.user_id)
+      UserMailer.comment_notification(@user).deliver
       redirect_to photo_path(id: @photo.id)
     else
       flash.now[:danger] = "コメントに失敗しました"
