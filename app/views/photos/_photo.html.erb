@@ -1,6 +1,6 @@
 <li id="photo-<%= photo.id %>">
   <span class="photo">
-    <%= image_tag photo.display_image %>
+    <%= image_tag photo.display_image if photo.image.attached? %>
   </span>
 
   <span class="likes">

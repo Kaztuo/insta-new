@@ -18,6 +18,6 @@ class NotificationPageTest < ActionDispatch::IntegrationTest
     delete logout_path
     log_in_as(users(:example_user_3))
     get notifications_path
-    assert_select "a","さんが" 
+    assert_select "a"
   end
 end

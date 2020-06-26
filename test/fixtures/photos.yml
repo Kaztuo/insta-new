@@ -11,4 +11,4 @@ Example_photos_two:
 Example_photos_three:
   id: 3
   created_at: <%= 1.minutes.ago %>
-  user: example_user_4
+  user: example_user_3

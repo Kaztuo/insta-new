@@ -16,7 +16,7 @@ class PhotoPageTest < ActionDispatch::IntegrationTest
     test_image = fixture_file_upload('test/fixtures/test_photo.jpg', 'image/jpg')
     assert_difference 'Photo.count', 1 do
       post photos_path, params: { photo: { image: test_image,
-                                         user_id: 1 } }
+                                         user_id: 3 } }
     end
     assert assigns(:upload_photo).image.attached? 
   end

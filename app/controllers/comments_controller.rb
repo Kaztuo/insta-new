@@ -7,7 +7,7 @@ class CommentsController < ApplicationController
     @comment = @photo.comments.build(comment_params)
     if @comment.save
       flash[:success] = "コメントしました"
-      @comment.update_attributes(user_id: current_user.id)
+      @comment.update(user_id: current_user.id)
       @comment.create_notification_comment!(current_user, @photo.id, @comment.id, @photo.user_id)
       @user = User.find(@photo.user_id)
       UserMailer.comment_notification(@user).deliver
