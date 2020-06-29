@@ -12,6 +12,12 @@
       <%= button_to 'いいね', likes_path(photo_id: photo.id), method: :post %>
     <% end %>
   </span>
+  <!--<div-->
+  <!--  class="fb-like"-->
+  <!--  data-share="true"-->
+  <!--  data-width="450"-->
+  <!--  data-show-faces="true">-->
+  <!--</div>-->
   
   <ol class="comments">
       <% @comments = photo.comments.compact %>
