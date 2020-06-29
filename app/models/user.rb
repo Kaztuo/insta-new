@@ -1,10 +1,28 @@
 class User < ApplicationRecord
+  
+  #Facebook認証
+  # Include default devise modules. Others available are:
+  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+  devise :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :validatable, :omniauthable
+  def self.find_for_oauth(auth)
+    user = User.where(uid: auth.uid, provider: auth.provider).first
+
+    unless user
+      user = User.create(
+        uid:      auth.uid,
+        provider: auth.provider,
+        email:    auth.info.email,
+        password: Devise.friendly_token[0, 20]
+      )
+    end
+    user
+  end
+
+  
   has_many :photos, dependent: :destroy
   has_many :likes, dependent: :destroy
   has_many :liked_photos, through: :likes, source: :photo
-  def already_liked?(photo)
-    self.likes.exists?(photo_id: photo.id)
-  end
   
   has_many :active_relationships,  class_name: "Relationship",
                                   foreign_key: "follower_id",
@@ -13,7 +31,6 @@ class User < ApplicationRecord
                                   foreign_key: "followed_id",
                                     dependent: :destroy
                                    
-  has_secure_password
   has_many :following, through: :active_relationships, source: :followed
   has_many :followers, through: :passive_relationships #, source: :follower 
                                                        #Railsが「followers」を単数形にして
@@ -21,14 +38,16 @@ class User < ApplicationRecord
   has_many :active_notifications, class_name: 'Notification', foreign_key: 'visitor_id', dependent: :destroy
   has_many :passive_notifications, class_name: 'Notification', foreign_key: 'visited_id', dependent: :destroy
   
-
-
-
-
+  has_secure_password
+  
   def User.digest(string)
     cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
                                                   BCrypt::Engine.cost
     BCrypt::Password.create(string, cost: cost)
+  end
+  
+  def already_liked?(photo)
+    self.likes.exists?(photo_id: photo.id)
   end
   
   # ユーザーをフォローする
