@@ -1,8 +1,6 @@
 class User < ApplicationRecord
   
   #Facebook認証
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :omniauthable
          
@@ -10,7 +8,8 @@ class User < ApplicationRecord
     user = User.where(uid: auth.uid, provider: auth.provider).first
 
     unless user
-      user = User.create( email:    auth.info.email,
+      user = User.create( user_name: auth.name,
+                          email:    auth.info.email,
                           uid:      auth.uid,
                           provider: auth.provider,
                           password: Devise.friendly_token[0, 20] )
@@ -37,7 +36,7 @@ class User < ApplicationRecord
   has_many :active_notifications, class_name: 'Notification', foreign_key: 'visitor_id', dependent: :destroy
   has_many :passive_notifications, class_name: 'Notification', foreign_key: 'visited_id', dependent: :destroy
   
-  has_secure_password
+  #has_secure_password deviseを入れたのでpassword_digestではなくてencryptedが使われるようになったらしい?
   
   def User.digest(string)
     cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :

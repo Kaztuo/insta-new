@@ -1,18 +1,11 @@
 Rails.application.routes.draw do
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
-  # get 'comments/new'
-  # get 'comments/create'
-
   
-  get     '/comments/search', to: 'comments#search'
-  # get     '/comments', to: 'comments#index'
-  
-  # get 'sessions/new'
-  # get 'photos/create'
-  # get 'photos/show'
   root 'static_pages#home'
+  get     '/comments/search', to: 'comments#search'
   get     '/terms',   to: 'static_pages#terms'
   get     '/signup',  to: 'users#new'
+  post    '/signup',  to: 'users#create'
   get     '/login',  to: 'sessions#new'
   post    '/login',  to: 'sessions#create'
   delete  '/logout',  to: 'sessions#destroy'
