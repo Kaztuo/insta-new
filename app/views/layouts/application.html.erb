@@ -12,15 +12,15 @@
   <body>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
-    <%= render 'layouts/header' if logged_in? %>
-      <div class="container">
-        <% flash.each do |message_type, message| %>
-          <%= content_tag(:div, message, class: "alert alert-#{message_type}") %>
-        <% end %>
-        <%= yield %> 
-      </div>
-      <%= render 'layouts/footer' if logged_in? %>
-      <%= debug(params) if Rails.env.development? %>
+    <%= render 'layouts/header' if user_signed_in? %>
+    <div class="container">
+      <% flash.each do |message_type, message| %>
+        <%= content_tag(:div, message, class: "alert alert-#{message_type}") %>
+      <% end %>
+      <%= yield %> 
+    </div>
+    <%= render 'layouts/footer' if user_signed_in? %>
+    <%= debug(params) if Rails.env.development? %>
   </body>
   <script>
       window.fbAsyncInit = function() {

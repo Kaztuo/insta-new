@@ -5,7 +5,7 @@
     <%= @user.user_name %> 
   </h1>
   
-  <% if current_user?(@user)%>
+  <% if current_user %>
     <div>
       <%= link_to "プロフィール編集ページ", edit_user_path(@user) %>
     </div>

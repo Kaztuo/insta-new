@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class Users::SessionsController < Devise::SessionsController
+  # before_action :authenticate_user!
   # before_action :configure_sign_in_params, only: [:create]
 
   # GET /resource/sign_in
@@ -10,10 +11,9 @@ class Users::SessionsController < Devise::SessionsController
 
   # POST /resource/sign_in
   # def create
-  #   @user = User.new(user_params)
-  #   if @user.save
+  #   @user = User.new(user_permitted_params)
+  #   if @user.save 
   #     log_in(@user)
-  #     byebug
   #     redirect_to @user  
   #   else
   #     render 'new'
@@ -21,8 +21,8 @@ class Users::SessionsController < Devise::SessionsController
   # end  
   
   # private
-  # def user_params
-  #   params.require(:user).permit(:email, :encrypted_password)
+  # def user_permitted_params
+  #   devise_parameter_sanitizer.permit(:sign_up, keys: [:email, :encrypted_password])
   # end
   # DELETE /resource/sign_out
   # def destroy

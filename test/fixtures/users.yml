@@ -1,23 +1,23 @@
 example_user_1:
   full_name: Example One
   user_name: example one
-  password_digest: <%= User.digest('password') %>
+  #password_digest: <%= User.digest('password') %>
   email: hoge1@hoge.com
 
 example_user_2:
   full_name: Example Two
   user_name: example two
-  password_digest: <%= User.digest('password') %>
+  #password_digest: <%= User.digest('password') %>
   email: hoge2@hoge.com
 
 example_user_3:
   full_name: Example Three
   user_name: example three
-  password_digest: <%= User.digest('password') %>
+  #password_digest: <%= User.digest('password') %>
   email: hoge3@hoge.com
   
 example_user_4:
   full_name: Example Four
   user_name: example four
-  password_digest: <%= User.digest('password') %>
+  #password_digest: <%= User.digest('password') %>
   email: hoge4@hoge.com
