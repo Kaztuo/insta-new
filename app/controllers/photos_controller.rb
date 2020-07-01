@@ -1,5 +1,5 @@
 class PhotosController < ApplicationController
-  before_action :logged_in_user, only: [:create]
+  before_action :authenticate_user!
   
   def create
     @upload_photo = current_user.photos.build(photo_params)

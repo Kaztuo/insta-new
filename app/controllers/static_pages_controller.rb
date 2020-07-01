@@ -1,5 +1,4 @@
 class StaticPagesController < ApplicationController
-  before_action :authenticate_user!
   def home
     if user_signed_in? #logged_in?
       #@photo = current_user.photos.build
