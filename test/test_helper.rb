@@ -28,7 +28,8 @@ class ActionDispatch::IntegrationTest
   end
 
   def log_in_as(user, password: 'password')
-    post login_path, params: { session: { user_name: user.user_name,
-                                          password: password} }
+    post user_session_path, params: { session: { user_name: user.user_name,
+                                                  password: password} 
+                                    }
   end
 end

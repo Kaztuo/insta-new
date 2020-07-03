@@ -10,10 +10,8 @@ class HomePageTest < ActionDispatch::IntegrationTest
     log_in_as(@user)
     get root_path
     assert_difference 'Comment.count', 1 do
-      #photo = fixture_file_upload('test/fixtures/test_photo.jpg', 'image/jpg')
-      post comments_path, params: { comment: { comment: "test" }, 
-                                   photo_id: 1 }
-                                   #photo: photo }
+      post comments_path, params: {   comment: { comment: "test" }, 
+                                     photo_id: 1 }
     end
     assert assigns(:comment).comment
     #follow_redirect!

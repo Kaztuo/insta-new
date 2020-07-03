@@ -33,8 +33,8 @@ class User < ApplicationRecord
   has_many :followers, through: :passive_relationships #, source: :follower 
                                                        #Railsが「followers」を単数形にして
                                                        #自動的に外部キーfollower_idを探してくれる
-  has_many :active_notifications, class_name: 'Notification', foreign_key: 'visitor_id', dependent: :destroy
-  has_many :passive_notifications, class_name: 'Notification', foreign_key: 'visited_id', dependent: :destroy
+  has_many :active_notifications, class_name: "Notification", foreign_key: "visitor_id", dependent: :destroy
+  has_many :passive_notifications, class_name: "Notification", foreign_key: "visited_id", dependent: :destroy
   
   #has_secure_password deviseを入れたのでpassword_digestではなくてencryptedが使われるようになったらしい?
   
@@ -68,11 +68,6 @@ class User < ApplicationRecord
   end
   
   def feed
-    # following_ids = "SELECT followed_id FROM relationships
-    #                 WHERE follower_id = :user_id"
-    # Photo.where("user_id IN (#{following_ids})
-    #                 OR user_id = :user_id", user_id: id)
-                     
     Photo.where("user_id IN (?)", following_ids)
   end
   

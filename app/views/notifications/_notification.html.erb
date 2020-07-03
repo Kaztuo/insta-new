@@ -3,7 +3,7 @@
 <span class='col-md-6.mx-auto form-inline'>
   <%= link_to user_path(visitor) do %>
     <%= gravatar_for visitor %>
-    <strong><%= visitor.user_name + 'さんが' %></strong>
+    <strong><%= 'visitor.user_name' + 'さんが' %></strong>
   <% end %>
   
   <% case notification.action %>
