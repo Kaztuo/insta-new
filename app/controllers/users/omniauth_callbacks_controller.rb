@@ -4,6 +4,10 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     callback_from :facebook
   end  
 
+  def failure
+    redirect_to root_path
+  end
+
   private
   def callback_from(provider)
     provider = provider.to_s
@@ -18,9 +22,5 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
       session["devise.#{provider}_data"] = request.env['omniauth.auth']
       redirect_to new_user_registration_url
     end
-  end
-  
-  def failure
-    redirect_to root_path
   end
 end
