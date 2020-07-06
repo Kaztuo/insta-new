@@ -1,6 +1,5 @@
 class User < ApplicationRecord
   
-  #Facebook認証
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :omniauthable
          
@@ -30,13 +29,9 @@ class User < ApplicationRecord
                                     dependent: :destroy
                                    
   has_many :following, through: :active_relationships, source: :followed
-  has_many :followers, through: :passive_relationships #, source: :follower 
-                                                       #Railsが「followers」を単数形にして
-                                                       #自動的に外部キーfollower_idを探してくれる
+  has_many :followers, through: :passive_relationships
   has_many :active_notifications, class_name: "Notification", foreign_key: "visitor_id", dependent: :destroy
   has_many :passive_notifications, class_name: "Notification", foreign_key: "visited_id", dependent: :destroy
-  
-  #has_secure_password deviseを入れたのでpassword_digestではなくてencryptedが使われるようになったらしい?
   
   def User.digest(string)
     cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
