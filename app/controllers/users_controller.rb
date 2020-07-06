@@ -17,16 +17,6 @@ class UsersController < ApplicationController
   def edit
   end
   
-  def create
-    @user = User.new(user_params)
-    if @user.save
-      log_in(@user)
-      redirect_to @user  
-    else
-      render 'new'
-    end
-  end  
-  
   def update
     if @user.update(user_params)
       flash[:success] = "Profile updated"
@@ -54,8 +44,6 @@ class UsersController < ApplicationController
                                  :website, :self_introduction, :email, :phone_number, :gender)
   end
   
-  #beforeフィルター
-  
   def correct_user
     @user = User.find(params[:id])
     redirect_to(root_url) unless current_user?(@user)
@@ -64,8 +52,8 @@ class UsersController < ApplicationController
   def logged_in_user
     unless user_signed_in? #logged_in?
       store_location
-      flash[:danger] = "Please log in."
-      redirect_to login_url
+      flash[:danger] = "ログインしてください。"
+      redirect_to new_user_session_url
     end
   end
 end
