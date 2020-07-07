@@ -12,13 +12,17 @@ class UsersController < ApplicationController
   
   def show
     @user = User.find(params[:id])
-    if @user.user_name.nil?
-      sign_out @user
-      redirect_to new_user_registration_url
-    else
-      render @user
-    end
   end
+  
+  def create
+    @user = User.new(user_params)
+    if @user.save
+      sign_in(@user)
+      redirect_to @user  
+    else
+      render 'new'
+    end
+  end  
   
   def edit
   end

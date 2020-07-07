@@ -6,7 +6,7 @@ User.create!(full_name:  "Example User",
              password_confirmation: "foobar")
 
 # 追加のユーザーをまとめて生成する
-30.times do |n|
+5.times do |n|
   full_name  = Faker::Name.name
   user_name = Faker::Name.name
   email = Faker::Internet.email
