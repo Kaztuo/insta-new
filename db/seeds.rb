@@ -1,6 +1,7 @@
 # メインのサンプルユーザーを1人作成する
 User.create!(full_name:  "Example User",
              user_name: "Exuser",
+             email: "email@email.com",
              password:              "foobar",
              password_confirmation: "foobar")
 
@@ -8,9 +9,11 @@ User.create!(full_name:  "Example User",
 30.times do |n|
   full_name  = Faker::Name.name
   user_name = Faker::Name.name
+  email = Faker::Internet.email
   password = "password"
   User.create!(full_name:  full_name,
                user_name: user_name,
+               email: email,
                password:              password,
                password_confirmation: password)
 end               
