@@ -12,6 +12,12 @@ class UsersController < ApplicationController
   
   def show
     @user = User.find(params[:id])
+    if @user.user_name.nil?
+      sign_out @user
+      redirect_to new_user_registration_url
+    else
+      render @user
+    end
   end
   
   def edit
@@ -53,7 +59,7 @@ class UsersController < ApplicationController
   end
   
   def logged_in_user
-    unless user_signed_in? #logged_in?
+    unless user_signed_in? 
       store_location
       flash[:danger] = "ログインしてください。"
       redirect_to new_user_session_url
