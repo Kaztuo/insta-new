@@ -27,6 +27,9 @@ class UsersController < ApplicationController
   end
 
   def destroy
+    current_user.destroy
+    flash[:success] = 'アカウントを削除しました'
+    redirect_to root_url
   end
   
   def following
