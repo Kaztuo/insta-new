@@ -12,14 +12,14 @@ class Users::SessionsController < Devise::SessionsController
   # POST /resource/sign_in
   # def create
   #   @user = User.new(user_permitted_params)
-  #   if @user.save 
+  #   if @user.save
   #     log_in(@user)
-  #     redirect_to @user  
+  #     redirect_to @user
   #   else
   #     render 'new'
   #   end
-  # end  
-  
+  # end
+
   # private
   # def user_permitted_params
   #   devise_parameter_sanitizer.permit(:sign_up, keys: [:email, :encrypted_password])

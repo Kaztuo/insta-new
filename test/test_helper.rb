@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 ENV['RAILS_ENV'] ||= 'test'
 require_relative '../config/environment'
 require 'rails/test_help'
-require "minitest/reporters"
+require 'minitest/reporters'
 Minitest::Reporters.use!
 
 class ActiveSupport::TestCase
@@ -11,25 +13,23 @@ class ActiveSupport::TestCase
   # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.
   fixtures :all
   include ApplicationHelper
-    
+
   def is_logged_in?
-    !session[:user_id].nil? 
+    !session[:user_id].nil?
   end
-  
+
   def log_in_as(user)
     session[:user_id] = user.id
   end
-end  
-  
+end
+
 class ActionDispatch::IntegrationTest
-  
   def setup
     @user = users(:example_user_1)
   end
 
   def log_in_as(user, password: 'password')
     post user_session_path, params: { session: { user_name: user.user_name,
-                                                  password: password} 
-                                    }
+                                                 password: password } }
   end
 end

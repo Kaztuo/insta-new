@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreatePhotos < ActiveRecord::Migration[6.0]
   def change
     create_table :photos do |t|
@@ -5,6 +7,6 @@ class CreatePhotos < ActiveRecord::Migration[6.0]
 
       t.timestamps
     end
-    add_index :photos, [:user_id, :created_at]
+    add_index :photos, %i[user_id created_at]
   end
 end

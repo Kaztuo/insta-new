@@ -1,8 +1,9 @@
+# frozen_string_literal: true
+
 class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
-  
   def facebook
     callback_from :facebook
-  end  
+  end
 
   def callback_from(provider)
     provider = provider.to_s
@@ -18,7 +19,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
       redirect_to new_user_registration_url
     end
   end
-  
+
   def failure
     redirect_to root_path
   end

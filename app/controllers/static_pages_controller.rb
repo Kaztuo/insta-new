@@ -1,10 +1,9 @@
+# frozen_string_literal: true
+
 class StaticPagesController < ApplicationController
   def home
-    if user_signed_in? #logged_in?
-      @feed_items = current_user.feed
-    end
+    @feed_items = current_user.feed if user_signed_in? # logged_in?
   end
 
-  def terms_of_use
-  end
+  def terms_of_use; end
 end
