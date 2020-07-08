@@ -1,6 +1,9 @@
-# frozen_string_literal: true
 
 class Users::RegistrationsController < Devise::RegistrationsController
+  
+  def new
+  end
+  
   def create
     @user = User.new(user_params)
     if @user.save

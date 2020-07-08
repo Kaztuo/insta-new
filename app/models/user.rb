@@ -12,7 +12,6 @@ class User < ApplicationRecord
                          uid: auth.uid,
                          provider: auth.provider,
                          password: Devise.friendly_token[0, 20])
-    user
   end
 
   has_many :photos, dependent: :destroy

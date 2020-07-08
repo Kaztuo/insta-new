@@ -19,8 +19,10 @@
       <%= f.label :password_confirmation, "パスワード（確認用）" %>
       <%= f.password_field :password_confirmation, class: 'form-control' %>
       
-      <%= hidden_field_tag :uid, session['devise.facebook_data'][:uid] %>
-      <%= hidden_field_tag :provider, session['devise.facebook_data'][:provider] %>
+      <% if session['devise.facebook_data'] %>
+      <%= hidden_field_tag :uid, value:"#{session['devise.facebook_data']['uid']}" %>
+      <%= hidden_field_tag :provider, value:"#{session['devise.facebook_data']['provider']}" %>
+      <% end %>
       
       <%= link_to "ご登録前にお読みください（利用規約ページ）", terms_path %>
 

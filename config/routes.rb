@@ -1,16 +1,20 @@
-# frozen_string_literal: true
-
 Rails.application.routes.draw do
-  devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks',
-                                    registrations: 'users/registrations',
-                                    sessions: 'users/sessions' }
-
+  devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks', 
+                                         registrations: 'users/registrations',
+                                              sessions: 'users/sessions'
+                                  }
+  
   root 'static_pages#home'
   get     '/comments/search', to: 'comments#search'
   get     '/terms',   to: 'static_pages#terms'
   post    '/signup',  to: 'users#create'
+  
+  # devise_scope :user do
+  #   post    '/users/sign_up',  to: 'users/registrations#create'
+  # end
+  
   delete  '/logout',  to: 'sessions#destroy'
-
+  
   resources :users do
     member do
       get :following, :followers
@@ -20,8 +24,9 @@ Rails.application.routes.draw do
   resources :users
   resources :password_resets
   resources :photos
-  resources :likes, only: %i[create destroy]
+  resources :likes,               only: [:create, :destroy]
   resources :comments
-  resources :relationships,       only: %i[create destroy]
+  resources :relationships,       only: [:create, :destroy]
   resources :notifications,       only: :index
+  
 end
