@@ -8,7 +8,6 @@ class SessionsController < ApplicationController
     if user&.valid_password?(params[:session][:password])
       session[:user_id] = user.id
       redirect_to user
-      # redirect_back_or @user?
     else
       flash.now[:danger] = 'ユーザーネームとパスワードの組み合わせが誤っています'
       render 'new'

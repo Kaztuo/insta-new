@@ -8,11 +8,6 @@ Rails.application.routes.draw do
   get     '/comments/search', to: 'comments#search'
   get     '/terms',   to: 'static_pages#terms'
   post    '/signup',  to: 'users#create'
-  
-  # devise_scope :user do
-  #   post    '/users/sign_up',  to: 'users/registrations#create'
-  # end
-  
   delete  '/logout',  to: 'sessions#destroy'
   
   resources :users do
