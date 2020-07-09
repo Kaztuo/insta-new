@@ -1,6 +1,5 @@
 class Devise::PasswordsController < DeviseController
   prepend_before_action :require_no_authentication
-  # Render the #edit only if coming from a reset password email link
   append_before_action :assert_reset_token_passed, only: :edit 
   
   def edit
