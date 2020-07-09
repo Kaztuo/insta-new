@@ -10,8 +10,10 @@ class PasswordResetsController < ApplicationController
   def create; end
 
   def update
-    if @user.authenticate(params[:password_exist].to_s) && params[:password] == params[:password_confirmation]
-      @user.update(password_params)
+    user = User.find_by(params[:id])
+    if user.valid_password?(params[:password_exist]) && params[:password_new] == params[:password_confirmation]
+      @user.update_attribute(:password, params[:password_new])
+      sign_in @user
       flash[:success] = 'パスワードが更新されました.'
       redirect_to @user
     else

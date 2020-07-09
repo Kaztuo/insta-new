@@ -8,8 +8,7 @@ Rails.application.routes.draw do
   get     '/comments/search', to: 'comments#search'
   get     '/terms',   to: 'static_pages#terms'
   post    '/signup',  to: 'users#create'
-  delete  '/logout',  to: 'sessions#destroy'
-  
+
   resources :users do
     member do
       get :following, :followers
