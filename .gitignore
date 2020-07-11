@@ -34,5 +34,6 @@
 yarn-debug.log*
 .yarn-integrity
 
-/bin/*
-/config/*
+/bin/
+/config/
+/vendor/
