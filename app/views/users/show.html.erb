@@ -1,0 +1,48 @@
+<% provide(:title, @user.user_name) %>
+<div class="row">
+  <h1>
+    <%= gravatar_for @user if @user.email %>
+    <% if @user.user_name %>
+    <%= @user.user_name %>
+    <% else %>
+    <%= link_to "ユーザー名を設定してください", edit_user_path(@user)  %> 
+    <% end %> 
+  </h1>
+  
+  <% if current_user %>
+    <div>
+      <%= link_to "プロフィール編集ページ", edit_user_path(@user) %>
+    </div>
+  <% else %>
+    <h2>自分以外のページ</h2>
+  <% end %>
+  
+  <section class="follow-unfollow">
+    <%= render 'follow_form' %>
+  </section>
+  
+  <section class="uploaded photos number">
+    これまでに登録した写真の件数:
+    <%= @user.photos.count %>
+  </section>
+  
+  <section class="stats">
+    <%= render 'shared/stats' %>
+  </section>
+  
+  <section class="user-self_introduction">
+    自己紹介
+    <%=  @user.self_introduction %>
+  </section>
+  
+  <section class="like_photos">
+      <%= render 'users/likes' %>
+  </section>
+</div>
+
+<div class="row">
+  <ol class="lined_up_photos">
+      <%= render 'shared/lined_up_photos' %>
+  </ol>
+</div>
+

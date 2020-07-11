@@ -1,0 +1,7 @@
+<% @user.each do |user| %>
+  <li>
+    <%= gravatar_for user, size: 50 if user.email %>
+    <%= link_to user.user_name, user_path(user.id) %>  
+    <hr>
+  </li>
+<% end %>
