@@ -37,3 +37,6 @@ yarn-debug.log*
 /bin/
 /config/
 /vendor/
+/.bundle/
+/.git/
+/node_modules/
