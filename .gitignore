@@ -34,4 +34,19 @@
 yarn-debug.log*
 .yarn-integrity
 
+/bin/
+/config/
+!/config/credentials.yml.enc
+
+/lib/
+/log/
+/storage/
+/tmp/
+
+/vendor/
+/.git/
 /public/
+
+/.ruby-version
+/babel.config.js
+/postcss.config.js
