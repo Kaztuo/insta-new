@@ -36,3 +36,18 @@ yarn-debug.log*
 
 /bin/
 /config/
+!/credentials.yml.enc
+
+/lib/
+/log/
+/storage/
+/tmp/
+
+/vendor/
+/.git/
+/public/
+
+/.browserslistrc
+/.ruby-version
+/babel.config.js
+/postcss.config.js
