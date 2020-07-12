@@ -48,4 +48,5 @@ yarn-debug.log*
 /public/
 
 /.ruby-version
+/babel.config.js
 /postcss.config.js
