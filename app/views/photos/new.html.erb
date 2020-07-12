@@ -1,0 +1,16 @@
+<% provide(:title, 'Photo upload') %>
+<div class="center">
+  <h1>写真アップロード画面</h1>
+  
+  <%= form_with(model: Photo.new, local: true ) do |f| %>
+    <%= render 'shared/error_messages', object: f.object %>
+    <span class="image">
+      <%= f.label :image, "写真選択ボタン" %>
+      <%= f.file_field :image, accept: "image/jpeg, image/png" %>
+    </span>
+    <%= f.hidden_field :user_id  %>
+    <section class="center">
+      <%= f.submit "写真をアップロードする", class: "btn btn-sm btn-primary" %>
+    </section>
+  <% end %>
+</div>
