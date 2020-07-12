@@ -35,8 +35,7 @@ yarn-debug.log*
 .yarn-integrity
 
 /bin/
-/config/
-!/credentials.yml.enc
+
 
 /lib/
 /log/
