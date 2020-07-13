@@ -36,7 +36,6 @@ yarn-debug.log*
 
 /bin/
 /config/
-!/config/credentials.yml.enc
 
 /lib/
 /log/
