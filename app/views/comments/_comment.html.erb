@@ -1,0 +1,10 @@
+<% if !comment.comment.blank? %>
+  <li id="comment-<%= comment.id %>">
+      <div class="comment">
+        <%= comment.comment %>
+      </div>
+      <span class="timestamp">
+        Posted <%= time_ago_in_words(comment.created_at ) %> ago.
+      </span>
+  </li>
+<% end %>

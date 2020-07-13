@@ -1,24 +1,10 @@
-# README
+・自分が苦労した点
+開発が詰まったときはいつも、質問するか、もう少し自分で調べて解決してみるかという葛藤がありました。
+そもそも何を質問したいのか分からないことが多かったです。
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+・学んだ点
+エラー文のなかに沢山のヒントが詰まっていることがよく分かりました。
+あたりをつけながら色々変更を試してみて、その都度色んなエラー文を出すなど、デバッグ方法を学びました。
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+・自慢したい・相談したい点
+要件を全て実装できたのは自信になりました。
